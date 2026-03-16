@@ -1,0 +1,10 @@
+{
+  "Compilations": [
+    {
+      "Source": "wwwroot/scss/main.scss",
+      "Target": "wwwroot/css/main.css"
+    }
+  ],
+  "Arguments": "--style=expanded",
+  "GenerateScopedCss": false
+}
