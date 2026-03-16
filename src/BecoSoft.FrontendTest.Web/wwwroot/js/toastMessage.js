@@ -1,26 +1,33 @@
 (function ($) {
   "use strict";
 
+  const VALID_TYPES = ["success", "error"];
+
   const DEFAULTS = {
     duration: 3000,
     sticky: false,
   };
 
-  let containerCreated = false;
-
   function ensureContainer() {
-    if (!containerCreated) {
-      $("body").append('<div id="toast-container"></div>');
-      containerCreated = true;
+    let $container = $("#toast-container");
+
+    if (!$container.length) {
+      $container = $('<div id="toast-container"></div>').appendTo("body");
     }
 
-    return $("#toast-container");
+    return $container;
   }
 
   function createToast(type, message, options) {
-    const config = $.extend({}, DEFAULTS, options);
+    const invalidType = VALID_TYPES.indexOf(type) === -1;
+    if (invalidType) {
+      type = "success";
+    }
 
+    const config = $.extend({}, DEFAULTS, options);
     const $container = ensureContainer();
+    let closed = false;
+    let autoCloseTimer = null;
 
     const $toast = $("<div>", {
       class: "toast-message toast-message--" + type,
@@ -50,18 +57,32 @@
     });
 
     function close() {
+      if (closed) return;
+      closed = true;
+
+      if (autoCloseTimer) {
+        clearTimeout(autoCloseTimer);
+      }
+
       $toast.removeClass("toast-message--visible");
 
+      const fallback = setTimeout(remove, 400);
+
       $toast.one("transitionend", function () {
-        $toast.remove();
-        $(document).trigger("toastClosed", { type: type, message: message });
+        clearTimeout(fallback);
+        remove();
       });
+    }
+
+    function remove() {
+      $toast.remove();
+      $(document).trigger("toastClosed", { type: type, message: message });
     }
 
     $close.on("click", close);
 
     if (!config.sticky) {
-      setTimeout(close, config.duration);
+      autoCloseTimer = setTimeout(close, config.duration);
     }
 
     return $toast;
