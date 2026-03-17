@@ -1,1 +1,5 @@
-@use "components/toastMessage";
+@import "base/variables";
+@import "../lib/bootstrap/scss/bootstrap";
+
+// Components
+@import "components/toastMessage";
