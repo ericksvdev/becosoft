@@ -1,66 +1,47 @@
-@use "../base/variables" as *;
-
 #toast-container {
-    position: fixed;
-    top: 1.25rem;
-    right: 1.25rem;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    max-width: 25rem;
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10000;
+  gap: 0.625rem;
+  max-width: 25rem;
 
-    @media (max-width: 30rem) {
-        right: 0.625rem;
-        left: 0.625rem;
-        max-width: none;
-    }
+  @include media-breakpoint-down(xs) {
+    right: 0.625rem;
+    left: 0.625rem;
+    max-width: none;
+  }
 }
 
 .toast-message {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    background-color: $color-white;
-    border-left: 0.25rem solid transparent;
-    border-radius: 0.25rem;
-    box-shadow: $toast-shadow;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+  padding: 0.75rem 1rem;
+  border-left: 0.25rem solid transparent;
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 
-    &--visible {
-        opacity: 1;
-        transform: translateX(0);
+  &--visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &--success {
+    border-left-color: $secondary;
+  }
+
+  &--error {
+    border-left-color: $danger;
+  }
+
+  &__close {
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.125rem;
+
+    &:hover {
+      color: $body-color;
     }
-
-    &--success {
-        border-left-color: $toast-success-color;
-    }
-
-    &--error {
-        border-left-color: $toast-error-color;
-    }
-
-    &__text {
-        flex: 1;
-        font-size: 0.875rem;
-        color: $color-text;
-    }
-
-    &__close {
-        background: none;
-        border: none;
-        font-size: 1.125rem;
-        color: $color-muted;
-        cursor: pointer;
-        margin-left: 0.75rem;
-        padding: 0 0.25rem;
-        line-height: 1;
-
-        &:hover {
-            color: $color-text;
-        }
-    }
+  }
 }
