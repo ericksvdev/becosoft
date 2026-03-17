@@ -1,0 +1,114 @@
+.footer {
+  &__title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 2rem;
+      height: 0.125rem;
+      background-color: $primary;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    a {
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: color 0.2s;
+      color: rgba($white, 0.7);
+
+      &:hover {
+        color: $white;
+        text-decoration: none;
+      }
+
+      i {
+        margin-right: 0.25rem;
+        font-size: 0.65rem;
+        color: $secondary;
+      }
+    }
+  }
+
+  &__newsletter {
+    .input-group {
+      max-width: 16rem;
+    }
+
+    .btn {
+      border-radius: 0;
+      padding: 0.375rem 0.75rem;
+    }
+  }
+
+  &__hours {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba($white, 0.7);
+      margin-bottom: 0.2rem;
+
+      span:first-child {
+        min-width: 6rem;
+      }
+    }
+  }
+
+  &__rating {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: rgba($white, 0.7);
+
+    .badge {
+      font-size: 0.75rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__social {
+    a {
+      color: rgba($secondary, 0.9);
+      font-size: 1.25rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $secondary;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__bottom {
+    font-size: 0.75rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}
