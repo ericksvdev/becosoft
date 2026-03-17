@@ -12,7 +12,7 @@
     let $container = $("#toast-container");
 
     if (!$container.length) {
-      $container = $('<div id="toast-container"></div>').appendTo("body");
+      $container = $('<div id="toast-container" class="d-flex flex-column"></div>').appendTo("body");
     }
 
     return $container;
@@ -30,16 +30,16 @@
     let autoCloseTimer = null;
 
     const $toast = $("<div>", {
-      class: "toast-message toast-message--" + type,
+      class: "toast-message toast-message--" + type + " d-flex align-items-center justify-content-between bg-white rounded shadow-sm",
     });
 
     const $content = $("<span>", {
-      class: "toast-message__text",
+      class: "toast-message__text flex-grow-1 small",
       text: message,
     });
 
     const $close = $("<button>", {
-      class: "toast-message__close",
+      class: "toast-message__close border-0 bg-transparent text-muted ml-3 px-1 py-0",
       html: '<i class="fas fa-times"></i>',
       "aria-label": "Close",
     });
