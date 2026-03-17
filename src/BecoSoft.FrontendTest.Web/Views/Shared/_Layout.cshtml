@@ -14,6 +14,8 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body class="d-flex flex-column gap-2">
+    <partial name="_Header" />
+
     <main class="container flex-1">
         @RenderBody()
     </main>
