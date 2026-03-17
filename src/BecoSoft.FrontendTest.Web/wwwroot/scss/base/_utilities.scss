@@ -1,0 +1,14 @@
+// Gap
+@each $key, $value in $spacers {
+  .gap-#{$key} {
+    gap: $value;
+  }
+
+  .row-gap-#{$key} {
+    row-gap: $value;
+  }
+
+  .column-gap-#{$key} {
+    column-gap: $value;
+  }
+}
