@@ -1,0 +1,81 @@
+@model BecoSoft.FrontendTest.Web.Models.ViewModels.ProductDetailViewModel
+
+@{
+    var hasImages = Model.ImageUrls != null && Model.ImageUrls.Any();
+    var hasDiscount = Model.DiscountedPrice.HasValue && Model.DiscountedPrice.Value < Model.Price;
+}
+
+<div class="product-gallery d-flex flex-column-reverse flex-md-row" data-product-gallery tabindex="0">
+    <div class="d-flex flex-row flex-md-column gap-2 mt-2 mt-md-0 mr-md-3">
+        @for (var i = 0; i < Model.ImageUrls.Count; i++)
+        {
+            var image = Model.ImageUrls[i];
+            var isActive = i == 0 ? "is-active" : string.Empty;
+
+            <button type="button"
+                    class="btn p-0 border rounded overflow-hidden product-gallery__thumb @isActive"
+                    data-gallery-thumb
+                    data-image-index="@i"
+                    aria-label="Select image @(i + 1)">
+                <img src="@image"
+                     alt="@Model.Title thumbnail @(i + 1)"
+                     class="w-100 h-100"
+                     width="100"
+                     height="100"
+                     loading="lazy"
+                     decoding="async" />
+            </button>
+        }
+    </div>
+
+    <div class="flex-grow-1">
+        <div class="product-gallery__main-container position-relative overflow-hidden rounded bg-white p-2 mb-2">
+            @if (hasDiscount)
+            {
+                <span class="product-gallery__badge position-absolute d-flex align-items-center justify-content-center rounded-circle bg-secondary">
+                    <strong class="text-primary">Promo</strong>
+                </span>
+            }
+
+            @for (var i = 0; i < Model.ImageUrls.Count; i++)
+            {
+                var image = Model.ImageUrls[i];
+                var hiddenClass = i == 0 ? "" : "d-none";
+
+                <img src="@image"
+                     alt="@Model.Title - image @(i + 1)"
+                     class="product-gallery__main-image w-100 h-100 @hiddenClass"
+                     width="800"
+                     height="800"
+                     decoding="async"
+                     loading="@(i == 0 ? "eager" : "lazy")"
+                     data-gallery-image="@i" />
+            }
+
+            <button type="button"
+                    class="btn btn-icon position-absolute product-gallery__arrow product-gallery__arrow--prev"
+                    aria-label="Previous image"
+                    data-gallery-action="prev">
+                <i class="fas fa-chevron-left text-primary fa-lg" aria-hidden="true"></i>
+            </button>
+
+            <button type="button"
+                    class="btn btn-icon position-absolute product-gallery__arrow product-gallery__arrow--next"
+                    aria-label="Next image"
+                    data-gallery-action="next">
+                <i class="fas fa-chevron-right text-primary fa-lg" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2 mb-2">
+            @for (var i = 0; i < Model.ImageUrls.Count; i++)
+            {
+                var activeDot = i == 0 ? "is-active" : string.Empty;
+                <span class="product-gallery__dot rounded-circle @activeDot"
+                      data-gallery-dot="@i"></span>
+            }
+        </div>
+
+        <small class="product-gallery__caption text-muted font-italic">Images are as accurate a representation as possible.</small>
+    </div>
+</div>
