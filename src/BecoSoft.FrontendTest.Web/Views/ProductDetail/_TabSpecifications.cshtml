@@ -1,0 +1,33 @@
+@model BecoSoft.FrontendTest.Web.Models.ViewModels.ProductDetailViewModel
+
+@functions {
+    static IEnumerable<(string Key, string Value)> ParseListToRows(string html)
+    {
+        var matches = System.Text.RegularExpressions.Regex.Matches(html, @"<li>(.*?)</li>");
+        foreach (System.Text.RegularExpressions.Match m in matches)
+        {
+            var parts = m.Groups[1].Value.Split(':', 2);
+            yield return parts.Length == 2
+                ? (parts[0].Trim(), parts[1].Trim())
+                : (m.Groups[1].Value.Trim(), "");
+        }
+    }
+}
+
+<div class="table-responsive">
+    <table class="table table-striped mb-0">
+        <colgroup>
+            <col style="width: 35%">
+            <col>
+        </colgroup>
+        <tbody>
+            @foreach (var (key, value) in ParseListToRows(Model.SpecificationsHtml))
+            {
+                <tr>
+                    <td>@key</td>
+                    <td class="text-muted">@value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
