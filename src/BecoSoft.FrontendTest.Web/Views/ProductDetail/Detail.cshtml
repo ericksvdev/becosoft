@@ -16,6 +16,10 @@
     </div>
 </section>
 
+<section class="py-4">
+    <partial name="_ProductTabs" model="Model" />
+</section>
+
 @section Styles {
     <link rel="preload" href="@Model.ImageUrls.First()" as="image" />
 }

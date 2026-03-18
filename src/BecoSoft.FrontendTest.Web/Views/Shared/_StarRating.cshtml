@@ -7,7 +7,7 @@
 <span class="d-inline-flex align-items-center gap-1" aria-label="Rating: @normalizedRating of 5">
     @for (var i = 1; i <= 5; i++)
     {
-        var starClass = i <= normalizedRating ? "text-secondary" : "text-muted";
-        <i class="fas fa-star @starClass" aria-hidden="true"></i>
+        var starClass = i <= normalizedRating ? "fas text-secondary" : "far text-muted";
+        <i class="fa-star @starClass" aria-hidden="true"></i>
     }
 </span>
