@@ -4,4 +4,22 @@
     ViewData["Title"] = "Product Details";
 }
 
-<h1>@Model.Title</h1>
+<section class="py-4">
+    <div class="row">
+        <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+            <partial name="_ProductGallery" model="Model" />
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <partial name="_ProductInfo" model="Model" />
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="preload" href="@Model.ImageUrls.First()" as="image" />
+}
+
+@section Scripts {
+    <script src="~/js/productGallery.js"></script>
+}

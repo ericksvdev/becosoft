@@ -18,7 +18,7 @@ namespace BecoSoft.FrontendTest.Web.Models.ViewModels
     public class ReviewViewModel
     {
         public string Author { get; set; } = null!;
-        public int Rating { get; set; } // 1–5 stars
+        public int Rating { get; set; }
         public string Comment { get; set; } = null!;
     }
 

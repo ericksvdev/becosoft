@@ -1,3 +1,7 @@
+html {
+  font-size: clamp(87.5%, 1vw + 0.5rem, 100%);
+}
+
 body {
   min-height: 100svh;
 
