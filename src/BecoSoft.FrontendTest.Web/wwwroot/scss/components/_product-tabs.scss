@@ -1,0 +1,26 @@
+.product-tabs {
+  .nav.nav-tabs {
+    overflow: auto hidden;
+
+    .nav-link {
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: $dark;
+
+      &:hover {
+        color: $primary;
+        border-bottom-color: rgba($primary, 0.3);
+      }
+
+      &.active {
+        color: $primary;
+        background: none;
+        border-bottom-color: $primary;
+      }
+
+      .fa-sliders {
+        rotate: 90deg;
+      }
+    }
+  }
+}
