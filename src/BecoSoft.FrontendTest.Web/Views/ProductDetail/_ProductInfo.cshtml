@@ -1,0 +1,101 @@
+@model BecoSoft.FrontendTest.Web.Models.ViewModels.ProductDetailViewModel
+
+@{
+    var hasDiscount = Model.DiscountedPrice.HasValue && Model.DiscountedPrice.Value < Model.Price;
+    var displayPrice = hasDiscount ? Model.DiscountedPrice.Value : Model.Price;
+    var discountPercent = hasDiscount
+        ? (int)Math.Round((Model.Price - Model.DiscountedPrice!.Value) / Model.Price * 100)
+        : 0;
+    var avgRating = Model.Reviews.Any()
+        ? (int)Math.Round(Model.Reviews.Average(r => r.Rating))
+        : 0;
+}
+
+<main class="product-info">
+    <h1 class="h4 font-weight-bold text-uppercase mb-2">@Model.Title</h1>
+
+    <div class="d-flex align-items-center gap-2 mb-3">
+        <partial name="_StarRating" model="avgRating" />
+        <small class="text-muted">(@Model.Reviews.Count)</small>
+        <small class="text-muted pl-2 border-left">25 sells</small>
+    </div>
+
+    @if (hasDiscount)
+    {
+        <div class="mb-3">
+            <span class="badge badge-primary px-3 py-2">Your Discount: @discountPercent%</span>
+        </div>
+    }
+
+    <div class="mb-1">
+        <span class="h2 text-primary">€ @displayPrice.ToString("F2")</span>
+        @if (hasDiscount)
+        {
+            <del class="text-muted ml-2">Recommended: € @Model.Price.ToString("F2")</del>
+        }
+    </div>
+    <p class="text-muted mb-4">
+        <small>€ @displayPrice.ToString("F2") / Unit</small>
+    </p>
+
+    <div class="d-flex flex-sm-row flex-column gap-2 mb-4">
+        <button onclick="$.toastMessage('error', 'Failed to add item to cart!', { sticky: true })" type="button" class="btn btn-primary flex-grow-1 text-uppercase font-weight-bold" data-add-to-cart>
+            <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart
+        </button>
+        <button onclick="$.toastMessage('success', 'Item added to wishlist!')" type="button" class="btn btn-secondary flex-grow-1 text-uppercase font-weight-bold" data-add-to-wishlist>
+            <i class="far fa-heart mr-2" aria-hidden="true"></i>Wishlist
+        </button>
+    </div>
+
+    <div class="d-flex align-items-start justify-content-between mb-3">
+        <div>
+            <p class="font-weight-bold mb-1">Online Availability</p>
+            @if (Model.InStock)
+            {
+                <span class="text-success">In Stock</span>
+            }
+            else
+            {
+                <span class="text-danger">Out of Stock</span>
+            }
+        </div>
+        <a href="#" class="btn btn-outline-primary btn-sm text-uppercase">
+            See All Promotions
+        </a>
+    </div>
+
+    <div class="mb-3">
+        <div class="d-flex align-items-center justify-content-between" data-toggle="collapse" data-target="#storePickup" role="button" aria-expanded="false" aria-controls="storePickup">
+            <span class="text-uppercase font-weight-bold small">Pick Up In One Of Our Stores</span>
+            <i class="fas fa-chevron-down text-muted" aria-hidden="true"></i>
+        </div>
+
+        <div class="collapse mt-3" id="storePickup">
+            <div class="d-flex flex-sm-row flex-column align-items-start justify-content-between mb-3 border-top pt-3 border-bottom pb-3">
+                <div>
+                    <p class="font-weight-bold mb-1">Turnhout</p>
+                    <span class="text-success small">In Stock &amp; Available</span>
+                </div>
+                <a href="#" class="btn btn-outline-primary btn-sm text-uppercase mt-2 mt-sm-0">
+                    Order for pickup in Turnhout
+                </a>
+            </div>
+            <div class="d-flex flex-sm-row flex-column align-items-start justify-content-between border-bottom pb-3 mb-3">
+                <div>
+                    <p class="font-weight-bold mb-1">Lommel</p>
+                    <span class="text-success small">In Stock &amp; Available</span>
+                </div>
+                <a href="#" class="btn btn-outline-primary btn-sm text-uppercase mt-2 mt-sm-0">
+                    Order for pickup in Lommel
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <small>
+        <a href="#" class="text-muted">
+            <i class="fas fa-question-circle mr-1" aria-hidden="true"></i>
+            Found it cheaper elsewhere?
+        </a>
+    </small>
+</main>

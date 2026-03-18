@@ -29,10 +29,12 @@
 
   &--success {
     border-left-color: $secondary;
+    background-color: lighten($secondary, 45%);
   }
 
   &--error {
     border-left-color: $danger;
+    background-color: lighten($danger, 45%);
   }
 
   &__close {

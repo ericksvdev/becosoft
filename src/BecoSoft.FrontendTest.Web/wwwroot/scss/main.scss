@@ -1,6 +1,6 @@
-@import "base/base";
 @import "base/variables";
 @import "../lib/bootstrap/scss/bootstrap";
+@import "base/base";
 @import "base/utilities";
 
 // Components
@@ -10,3 +10,4 @@
 @import "components/badge";
 @import "components/footer";
 @import "components/header";
+@import "components/product-gallery";
