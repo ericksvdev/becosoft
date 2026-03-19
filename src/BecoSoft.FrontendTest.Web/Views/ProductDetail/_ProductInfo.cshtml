@@ -2,7 +2,7 @@
 
 @{
     var hasDiscount = Model.DiscountedPrice.HasValue && Model.DiscountedPrice.Value < Model.Price;
-    var displayPrice = hasDiscount ? Model.DiscountedPrice.Value : Model.Price;
+    var displayPrice = hasDiscount ? Model.DiscountedPrice!.Value : Model.Price;
     var discountPercent = hasDiscount
         ? (int)Math.Round((Model.Price - Model.DiscountedPrice!.Value) / Model.Price * 100)
         : 0;
