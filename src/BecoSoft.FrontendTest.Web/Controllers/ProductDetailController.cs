@@ -5,7 +5,7 @@ namespace BecoSoft.FrontendTest.Web.Controllers;
 
 public class ProductDetailController : Controller
 {
-    public ActionResult Detail()
+    public ActionResult Index()
     {
         var model = new ProductDetailViewModel
         {
