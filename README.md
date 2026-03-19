@@ -230,3 +230,9 @@ $(document).on("toastClosed", function (e, data) {
 - Fields not present in the ViewModel (review date, sold count, store names, brand logo) were hardcoded directly in the views, as noted in the assignment
 - `SpecificationsHtml` arrives as a `<ul><li>Key: Value</li>` string — converted to a `<table>` in the partial view via a `@functions` helper, keeping the controller untouched
 - Bootstrap 4 was compiled from SCSS source (via LibMan) rather than loaded from CDN, to allow full theme customization through `$variables`devoluti
+
+### Known Limitations & Planned Improvements
+
+- The divider between the sold count and the rating is missing in the related products section (a responsive solution for text wrapping wasn't found in time)
+- A few icons differ from the mockup: some could not be identified, and others are not available under the Font Awesome free tier
+- The "Pick up in one of our stores" accordion flickers on both open and close
