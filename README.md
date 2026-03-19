@@ -216,7 +216,7 @@ $(document).on("toastClosed", function (e, data) {
 
 - Toasts **stack** — each new toast appends below the previous ones
 - Close button always visible; clicking it dismisses immediately
-- `sticky: true` hides the progress bar and disables auto-close
+- `sticky: true` disables auto-close
 
 ---
 
