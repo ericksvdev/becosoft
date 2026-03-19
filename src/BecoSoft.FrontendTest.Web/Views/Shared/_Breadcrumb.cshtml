@@ -1,0 +1,23 @@
+@{
+    var items = ViewData["Breadcrumbs"] as IEnumerable<(string Label, string Url)> ?? [];
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent px-0 mb-0">
+        <li class="breadcrumb-item">
+            <a href="/" aria-label="Home"><i class="fas fa-home text-primary" aria-hidden="true"></i></a>
+        </li>
+        @foreach (var (label, url) in items.SkipLast(1))
+        {
+            <li class="breadcrumb-item">
+                <a href="@url" class="text-muted">@label</a>
+            </li>
+        }
+        @if (items.Any())
+        {
+            <li class="breadcrumb-item active text-dark" aria-current="page">
+                @items.Last().Label
+            </li>
+        }
+    </ol>
+</nav>
