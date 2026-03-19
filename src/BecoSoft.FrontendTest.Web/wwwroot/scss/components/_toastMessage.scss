@@ -1,3 +1,5 @@
+@use "sass:color";
+
 #toast-container {
   position: fixed;
   top: 1.25rem;
@@ -29,12 +31,12 @@
 
   &--success {
     border-left-color: $secondary;
-    background-color: lighten($secondary, 45%);
+    background-color: color.scale($secondary, $lightness: 95%);
   }
 
   &--error {
     border-left-color: $danger;
-    background-color: lighten($danger, 45%);
+    background-color: color.scale($danger, $lightness: 95%);
   }
 
   &__close {
