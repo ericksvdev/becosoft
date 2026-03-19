@@ -54,6 +54,12 @@ public class ProductDetailController : Controller
             }
         };
 
+        ViewData["Breadcrumbs"] = new (string Label, string Url)[]
+        {
+            ("Backpacks", "/"),
+            (model.Title, "/")
+        };
+
         return View(model);
     }
 }

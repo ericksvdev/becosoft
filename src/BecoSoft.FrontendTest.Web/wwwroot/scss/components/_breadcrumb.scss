@@ -1,0 +1,10 @@
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+
+  + .breadcrumb-item::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.6rem;
+  }
+}
