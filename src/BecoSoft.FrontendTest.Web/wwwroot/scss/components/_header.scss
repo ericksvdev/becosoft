@@ -1,27 +1,38 @@
+$nav-link-color: rgba($light, 0.8);
+
 .header {
   &__links {
     a {
       color: currentColor;
       font-size: 0.75rem;
     }
-    .separator {
-      background-color: rgba($dark, 0.7);
-      width: 1px;
-      height: 0.75rem;
-    }
   }
 
   &__nav {
     font-size: 0.875rem;
-    color: rgba($light, 0.8);
+    color: $nav-link-color;
 
     .navbar-nav {
       gap: 0.875rem;
     }
 
+    .nav-link {
+      color: $nav-link-color;
+      padding: 0.4rem 0;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $light;
+      }
+    }
+  }
+
+  &__cart {
+    font-size: 0.875rem;
+    color: $nav-link-color;
+
     a {
-      color: rgba($light, 0.8);
-      padding: 0.4rem 0 !important;
+      color: $nav-link-color;
 
       &:hover {
         color: $light;

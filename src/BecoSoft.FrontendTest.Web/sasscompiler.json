@@ -5,6 +5,6 @@
       "Target": "wwwroot/css/main.css"
     }
   ],
-  "Arguments": "--style=expanded",
+  "Arguments": "--style=expanded --silence-deprecation=import --silence-deprecation=global-builtin --silence-deprecation=color-functions --silence-deprecation=if-function --silence-deprecation=abs-percent",
   "GenerateScopedCss": false
 }

@@ -11,10 +11,15 @@
 
 .btn-icon {
   padding: 0.375rem;
-  height: 2rem;
-  width: 2rem;
+  height: 2.375rem;
+  width: 2.375rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
+
+  &.btn-sm {
+    height: 2rem;
+    width: 2rem;
+  }
 }
