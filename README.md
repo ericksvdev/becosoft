@@ -31,8 +31,6 @@ A fully responsive product detail page built as part of the BecoSoft front-end d
 
 ## Screenshots
 
-> _Add your screenshots here_
-
 | Product Hero                               | Tabs & Reviews                     |
 | ------------------------------------------ | ---------------------------------- |
 | ![Product Hero](./public/main-section.png) | ![Product Tabs](./public/tabs.png) |
