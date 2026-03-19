@@ -186,10 +186,10 @@ $.toastMessage("error", "Critical error — please retry.", { sticky: true });
 
 ### Options
 
-| Option     | Type      | Default | Description                                |
-| ---------- | --------- | ------- | ------------------------------------------ |
-| `duration` | `number`  | `3000`  | Auto-close delay in ms                     |
-| `sticky`   | `boolean` | `false` | Requires manual close, disables auto-close |
+| Option     | Type      | Default | Description                                        |
+| ---------- | --------- | ------- | -------------------------------------------------- |
+| `duration` | `number`  | `3000`  | Auto-close delay in ms — clamped between 3000–5000 |
+| `sticky`   | `boolean` | `false` | Requires manual close, disables auto-close         |
 
 ### Message types
 

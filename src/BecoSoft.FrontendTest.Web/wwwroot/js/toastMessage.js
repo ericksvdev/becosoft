@@ -27,6 +27,7 @@
     }
 
     const config = $.extend({}, DEFAULTS, options);
+    config.duration = Math.min(Math.max(config.duration, 3000), 5000);
     const $container = ensureContainer();
     let closed = false;
     let autoCloseTimer = null;
