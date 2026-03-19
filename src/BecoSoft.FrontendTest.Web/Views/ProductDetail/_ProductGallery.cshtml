@@ -5,9 +5,9 @@
     var hasDiscount = Model.DiscountedPrice.HasValue && Model.DiscountedPrice.Value < Model.Price;
 }
 
-<div class="product-gallery d-flex flex-column-reverse flex-md-row" data-product-gallery tabindex="0">
-    <div class="d-flex flex-row flex-md-column gap-2 mt-2 mt-md-0 mr-md-3">
-        @for (var i = 0; i < Model.ImageUrls.Count; i++)
+<div class="product-gallery d-flex flex-column-reverse flex-lg-row" data-product-gallery tabindex="0">
+    <div class="d-flex flex-row flex-lg-column gap-2 mt-2 mt-lg-0 mr-lg-3">
+        @for (var i = 0; i < Model.ImageUrls!.Count; i++)
         {
             var image = Model.ImageUrls[i];
             var isActive = i == 0 ? "is-active" : string.Empty;
@@ -53,14 +53,14 @@
             }
 
             <button type="button"
-                    class="btn btn-icon position-absolute product-gallery__arrow product-gallery__arrow--prev"
+                    class="btn btn-icon btn-sm position-absolute product-gallery__arrow product-gallery__arrow--prev"
                     aria-label="Previous image"
                     data-gallery-action="prev">
                 <i class="fas fa-chevron-left text-primary fa-lg" aria-hidden="true"></i>
             </button>
 
             <button type="button"
-                    class="btn btn-icon position-absolute product-gallery__arrow product-gallery__arrow--next"
+                    class="btn btn-icon btn-sm position-absolute product-gallery__arrow product-gallery__arrow--next"
                     aria-label="Next image"
                     data-gallery-action="next">
                 <i class="fas fa-chevron-right text-primary fa-lg" aria-hidden="true"></i>
